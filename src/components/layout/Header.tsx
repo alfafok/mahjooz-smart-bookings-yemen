@@ -10,18 +10,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 export default function Header() {
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm">
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
-            <span className="text-xl font-bold text-mahjooz-purple">محجوز</span>
-            <span className="text-sm font-medium text-gray-600 mr-1">Mahjooz</span>
+            <span className="text-xl font-bold text-mahjooz-purple dark:text-purple-400">محجوز</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-300 mr-1">Mahjooz</span>
           </a>
         </div>
 
@@ -47,39 +48,43 @@ export default function Header() {
                 </svg>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="dark:bg-gray-900 dark:text-gray-100">
               <SheetHeader>
-                <SheetTitle className="text-right">القائمة</SheetTitle>
-                <SheetDescription className="text-right">
+                <SheetTitle className="text-right dark:text-white">القائمة</SheetTitle>
+                <SheetDescription className="text-right dark:text-gray-300">
                   اكتشف جميع خدمات محجوز
                 </SheetDescription>
               </SheetHeader>
               <div className="flex flex-col gap-3 py-4">
-                <Button variant="ghost" className="justify-end">الرئيسية</Button>
-                <Button variant="ghost" className="justify-end">فنادق واستراحات</Button>
-                <Button variant="ghost" className="justify-end">عيادات ومواعيد طبية</Button>
-                <Button variant="ghost" className="justify-end">تأجير سيارات</Button>
-                <Button variant="ghost" className="justify-end">تواصل معنا</Button>
-                <Button variant="ghost" className="justify-end">حول التطبيق</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">الرئيسية</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">فنادق واستراحات</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">عيادات ومواعيد طبية</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">تأجير سيارات</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">تواصل معنا</Button>
+                <Button variant="ghost" className="justify-end dark:text-gray-200">حول التطبيق</Button>
+                <div className="flex justify-end mt-2">
+                  <ThemeToggle />
+                </div>
               </div>
               <div className="flex flex-col gap-2 mt-auto">
-                <Button className="w-full bg-mahjooz-purple hover:bg-mahjooz-dark-purple">تسجيل الدخول</Button>
-                <Button variant="outline" className="w-full">إنشاء حساب</Button>
+                <Button className="w-full bg-mahjooz-purple hover:bg-mahjooz-dark-purple dark:bg-purple-600 dark:hover:bg-purple-700">تسجيل الدخول</Button>
+                <Button variant="outline" className="w-full dark:border-gray-700 dark:text-gray-200">إنشاء حساب</Button>
               </div>
             </SheetContent>
           </Sheet>
         ) : (
           <nav className="hidden md:flex items-center gap-6">
-            <a href="/" className="text-sm font-medium hover:text-mahjooz-purple transition-colors">الرئيسية</a>
-            <a href="/hotels" className="text-sm font-medium hover:text-mahjooz-purple transition-colors">فنادق واستراحات</a>
-            <a href="/clinics" className="text-sm font-medium hover:text-mahjooz-purple transition-colors">عيادات ومواعيد طبية</a>
-            <a href="/cars" className="text-sm font-medium hover:text-mahjooz-purple transition-colors">تأجير سيارات</a>
+            <a href="/" className="text-sm font-medium hover:text-mahjooz-purple dark:text-gray-200 dark:hover:text-purple-400 transition-colors">الرئيسية</a>
+            <a href="/hotels" className="text-sm font-medium hover:text-mahjooz-purple dark:text-gray-200 dark:hover:text-purple-400 transition-colors">فنادق واستراحات</a>
+            <a href="/clinics" className="text-sm font-medium hover:text-mahjooz-purple dark:text-gray-200 dark:hover:text-purple-400 transition-colors">عيادات ومواعيد طبية</a>
+            <a href="/cars" className="text-sm font-medium hover:text-mahjooz-purple dark:text-gray-200 dark:hover:text-purple-400 transition-colors">تأجير سيارات</a>
+            <ThemeToggle />
           </nav>
         )}
 
         <div className="hidden md:flex items-center gap-2">
-          <Button variant="outline">تسجيل الدخول</Button>
-          <Button className="bg-mahjooz-purple hover:bg-mahjooz-dark-purple">إنشاء حساب</Button>
+          <Button variant="outline" className="dark:border-gray-700 dark:text-gray-200">تسجيل الدخول</Button>
+          <Button className="bg-mahjooz-purple hover:bg-mahjooz-dark-purple dark:bg-purple-600 dark:hover:bg-purple-700">إنشاء حساب</Button>
         </div>
       </div>
     </header>
